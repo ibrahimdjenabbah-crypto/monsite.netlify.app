@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Programmes - Complexe Scolaire Ibrahima Bah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #005baa;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003f80;
+            text-align: center;
+            padding: 12px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #005baa, #00bcd4);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .container h2 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: #005baa;
+            text-align: center;
+        }
+
+        .filiere {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .filiere img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .filiere-content {
+            flex: 1;
+        }
+
+        .filiere h3 {
+            font-size: 20px;
+            color: #003f80;
+            margin-bottom: 10px;
+        }
+
+        .filiere ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .filiere ul li {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            background-color: #003f80;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .filiere {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .filiere img {
+                width: 100%;
+                height: auto;
+            }
+
+            .filiere-content {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <h1>Complexe Scolaire Ibrahima Bah</h1>
+        <p>Programmes d'enseignement pré-universitaire</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="a_propos.html">À propos</a>
+        <a href="Programme.html">Programmes</a>
+        <a href="Admissions.html">Admissions</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Nos Programmes</h1>
+        <p>Des parcours adaptés pour accompagner chaque élève vers l'excellence</p>
+    </div>
+
+    <!-- Contenu -->
+    <div class="container">
+        <h2>Nos filières</h2>
+
+        <!-- Filière Scientifique 1ère S -->
+        <div class="filiere">
+            <img src="projet3/images/20241022_185141.jpg" alt="Filière Scientifique" width="224" height="224">
+            <div class="filiere-content">
+                <h3>1ʳᵉ S (Scientifique – Mathématiques & Sciences)</h3>
+                <ul>
+                    <li>Mathématiques approfondies</li>
+                    <li>Physique-Chimie</li>
+                    <li>Sciences de la Vie et de la Terre (SVT)</li>
+                    <li>Français, Anglais, Histoire-Géographie</li>
+                    <li>Informatique ou Éducation civique</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Terminale S -->
+        <div class="filiere">
+            <img src="projet3/images/download.webp" alt="Terminale S" width="224" height="224">
+            <div class="filiere-content">
+                <h3>Terminale S (Scientifique – Mathématiques & Sciences)</h3>
+                <ul>
+                    <li>Mathématiques spéciales</li>
+                    <li>Physique-Chimie avancée</li>
+                    <li>SVT approfondie (optionnelle)</li>
+                    <li>Langues, Histoire-Géo</li>
+                    <li>Projet scientifique individuel</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Filière ES 1ère -->
+        <div class="filiere">
+            <img src="projet3/images/20250819_185819.jpg" alt="Filière Économique et Sociale" width="224" height="224">
+            <div class="filiere-content">
+                <h3>1ʳᵉ Économique et Sociale (Économie & Sciences Sociales)</h3>
+                <ul>
+                    <li>Économie générale</li>
+                    <li>Sciences sociales</li>
+                    <li>Mathématiques appliquées</li>
+                    <li>Langues, Histoire-Géo</li>
+                    <li>Informatique ou Philosophie</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Terminale ES -->
+        <div class="filiere">
+            <img src="projet3/images/OIP.webp" alt="Terminale ES" width="224" height="224">
+            <div class="filiere-content">
+                <h3>Terminale ES (Économique et Sociale)</h3>
+                <ul>
+                    <li>Économie approfondie</li>
+                    <li>Sciences sociales appliquées</li>
+                    <li>Mathématiques sociales</li>
+                    <li>Langues, Histoire-Géo</li>
+                    <li>Éducation civique ou Projet social</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Humanités -->
+        <div class="filiere">
+            <img src="projet3/images/download.webp" alt="Terminale S" width="224" height="224"" alt="Humanités">
+            <div class="filiere-content">
+                <h3>Humanités – Lettres et Langues</h3>
+                <ul>
+                    <li>Littérature française</li>
+                    <li>Langues vivantes (Anglais / Espagnol)</li>
+                    <li>Philosophie</li>
+                    <li>Histoire-Géographie approfondie</li>
+                    <li>Arts ou Éducation civique</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2025 Complexe Scolaire Ibrahima Bah</p>
+        <p>Conakry, Guinée | info@csib.edu.gn | +224 600 00 00 00</p>
+    </footer>
+
+</body>
+</html>
+
+
