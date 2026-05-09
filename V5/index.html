@@ -1,0 +1,1510 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon & icons -->
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/jpg" href="./og-cove.jpg">
+  <link rel="apple-touch-icon" href="./og-cove.jpg">
+
+  <!-- Manifest PWA (optionnel) -->
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Couleur d’habillage navigateur -->
+  <meta name="theme-color" id="themeColor" content="#ffffff">
+
+  <!-- Open Graph / partage -->
+  <meta property="og:title" content="Mangô – Achetez local, livré vite" />
+  <meta property="og:description" content="La place de marché qui connecte vendeurs, acheteurs et chauffeurs en Guinée." />
+  <meta property="og:image" content="./og-cover.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ton-domaine/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mangô – Achetez local, livré vite" />
+  <meta name="twitter:description" content="La place de marché qui connecte vendeurs, acheteurs et chauffeurs en Guinée." />
+  <meta name="twitter:image" content="https://ton-domaine/img/og-cover.jpg" />
+  <style>
+         /* ——— Polish visuel ——— */
+        :root{
+          --radius:16px; --shadow:0 10px 28px rgba(16,24,40,.06);
+          --ink-700:#334155; --brand:#25A244;
+        }
+        h1,h2,h3,b{ letter-spacing:-.01em }
+        .card{ border-radius:var(--radius); box-shadow:var(--shadow) }
+        .btn:focus,.input:focus,.select:focus{ outline:2px solid rgba(37,162,68,.25); outline-offset:2px }
+
+        /* Tabs: hover & active plus lisibles */
+        .header-tabs a{ transition:background .18s,border-color .18s,color .18s }
+        .header-tabs a:hover{ background:#f5f7fb; border-color:#E6ECF4 }
+        .header-tabs a.active{ color:var(--brand); background:#F3FBF6; border-color:#DEF7E3 }
+        .header-tabs a.active::after{ height:3px; bottom:4px; border-radius:999px }
+
+        /* Hero + images plus nettes */
+        .hero{ border-radius:24px }
+        .hero-ill img{ filter:saturate(1.02) }
+
+        /* Footer plus léger */
+        footer .copyright{ color:#6b7280 }
+
+        /* Compact header en scroll */
+        .site-header{ transition: box-shadow .2s, background .2s }
+        .site-header.shrink{ box-shadow:0 8px 22px rgba(16,24,40,.08); background:rgba(255,255,255,.92) }
+
+        :root{ --leaf-50:#F6FEF8; --leaf-100:#DEF7E3; --leaf-500:#25A244; --leaf-600:#1E8A3A; --ink-900:#0F172A; --ink-600:#475569; --surface:#FFFFFF; --surface-2:#FAFBFF; }
+        *{box-sizing:border-box} html,body{height:100%}
+        body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;color:var(--ink-900);background:var(--surface-2)}
+        a{color:inherit;text-decoration:none}
+        .container{max-width:1100px;margin:0 auto;padding:0 16px}
+        .site-header{position:sticky;top:0;z-index:40;background:var(--surface);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid #EEF0F6}
+        .header-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px}
+        .brand{display:flex;align-items:center;gap:10px}
+        .brand .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#FF9A1F,#25A244)}
+        .brand-name{font-family:Fraunces,serif;font-size:22px;letter-spacing:-.01em}
+        .actions{display:flex;align-items:center;gap:8px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:.6rem 1rem;border:1px solid #e8eef5;border-radius:999px;background:#fff;cursor:pointer}
+        .btn-primary{border-color:#25A244;background:#25A244;color:#fff}
+        .btn-ghost{background:#fff}
+        .header-tabs{display:flex;gap:6px;overflow:auto;padding:8px 10px 12px}
+        .header-tabs a{padding:.55rem .8rem;border-radius:999px;border:1px solid transparent;font-weight:500;position:relative;white-space:nowrap}
+        .header-tabs a.active{background:var(--leaf-50);border-color:var(--leaf-100);color:var(--leaf-600)}
+        .header-tabs a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:currentColor;opacity:.35}
+        .site-header.shrink .header-top{padding:6px 16px}
+        .site-header.shrink .brand .logo{width:28px;height:28px;border-radius:10px}
+        .site-header.shrink .brand-name{font-size:18px}
+        main > section{max-width:1100px;margin:18px auto;padding:0 16px}
+        [data-view]{display:none} [data-view].active{display:block}
+        .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:clamp(28px,6vw,80px) 16px;background:linear-gradient(180deg,#FFFFFF,#FAFBFF);border-radius:20px;border:1px solid #EEF0F6}
+        .hero .title{font-family:Fraunces,serif;font-size:clamp(28px,4.4vw,46px);line-height:1.05;margin:0 0 10px}
+        .hero .subtitle{color:var(--ink-600);font-size:clamp(14px,2.2vw,18px);margin:0 0 16px}
+        .hero .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+        .hero-ill{min-height:260px;border-radius:16px;overflow:hidden;border:1px solid #EEF0F6}
+        .hero-ill img{width:100%;height:100%;object-fit:cover;display:block}
+        .card{background:#fff;border:1px solid #EEF0F6;border-radius:16px;padding:14px}
+        .muted{color:#67748a;font-size:14px}
+        .table{width:100%;border-collapse:separate;border-spacing:0 8px}
+        .table th{font-weight:600;text-align:left;color:#314663}
+        .table td{background:#fff;border:1px solid #EEF0F6;padding:10px;border-radius:10px}
+        .input{padding:.55rem .7rem;border:1px solid #DEE3EC;border-radius:10px;width:100%}
+        .select{padding:.55rem .7rem;border:1px solid #DEE3EC;border-radius:10px;background:#fff}
+        .switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+        .grid{display:grid;gap:12px}
+        .grid-2{grid-template-columns:1fr 1fr}
+        .card-list{display:grid;gap:12px}
+        .product-card{display:flex;gap:12px;align-items:center;border:1px solid #EEF0F6;border-radius:14px;padding:10px;background:#fff}
+        .product-card img{width:72px;height:72px;border-radius:10px;object-fit:cover;border:1px solid #EEF0F6}
+        .product-card .meta{flex:1;min-width:0}
+        .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid #E7EEF6;border-radius:999px;padding:.3rem .6rem;background:#fff;font-size:12px;color:#345}
+        .badge.success{border-color:#C9F0D7;background:var(--leaf-50);color:var(--leaf-600)}
+        .leaflet-map{height:360px;border:1px solid #EEF0F6;border-radius:14px;overflow:hidden}
+        footer{border-top:1px solid #EEF0F6;margin-top:32px;background:#fff}
+        footer .copyright{padding:14px;color:#67748a}
+        /* --- Polish rapide --- */
+        :root{ --radius:16px; --shadow:0 8px 24px rgba(16,24,40,.06); }
+        .card{ border-radius:var(--radius); box-shadow:var(--shadow); }
+        .header-tabs a{ transition:background .2s, border-color .2s, color .2s; }
+        .header-tabs a:hover{ background:#f4f7fb; border-color:#E6ECF4; }
+        .btn{ transition: transform .06s ease, box-shadow .2s; }
+        .btn-primary:hover{ box-shadow:0 8px 20px rgba(37,162,68,.24); transform:translateY(-1px); }
+        .site-header{ transition: box-shadow .2s, background .2s; }
+        .site-header.shrink{ box-shadow:0 6px 20px rgba(16,24,40,.08); background:rgba(255,255,255,.9); }
+        .badge.success { background:#10b981; color:#fff; }
+        .badge.warning { background:#f59e0b; color:#fff; }
+        .badge.danger  { background:#ef4444; color:#fff; }
+        /* Couleurs badges de note uniquement */
+        .badge.success { background:#10b981; color:#fff; border-color:transparent; }
+        .badge.warning { background:#f59e0b; color:#fff; border-color:transparent; }
+        .badge.danger  { background:#ef4444; color:#fff; border-color:transparent; }
+
+
+  </style>
+
+  <style>
+      .product-card{
+        display:flex; gap:12px; padding:10px; border:1px solid #EEF0F6; border-radius:12px; background:#fff;
+        align-items:flex-start;
+      }
+      .product-card img{ width:72px; height:72px; object-fit:cover; border-radius:10px }
+      .product-card .meta{ flex:1; min-width:0 }
+  </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-top container">
+            <div class="brand">
+               <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="./og-cove.jpg" alt="Logo Mangô" style="width: 40px; height: 40px; border-radius: 8px; object-fit: cover;">
+                    <span style="font-weight: bold; font-size: 1.2rem; color: var(--leaf-700);">Mangô</span>
+                </div>
+
+            </div>
+            <div class="actions">
+                <button id="themeToggle" class="btn btn-ghost" aria-label="Basculer le thème">🌙 Mode</button>
+                <button id="skinToggle" class="btn btn-ghost" aria-label="Basculer le style">◑ Minimal</button>
+                <a class="btn btn-ghost" href="#cart">Panier (<span id="cartCount">0</span>)</a>
+            </div>
+        </div>
+        <nav class="header-tabs container" role="tablist" aria-label="Navigation principale">
+            <a href="#roles" data-tab class="active">Accueil</a>
+            <a href="#categories" data-tab>Catégories</a>
+            <a href="#product" data-tab>Produit</a>
+            <a href="#seller" data-tab>Vendeur</a>
+            <a href="#driver" data-tab>Chauffeur</a>
+            <a href="#tracking" data-tab>Suivi</a>
+            <a href="#checkout" data-tab>Paiement</a>
+        </nav>
+    </header>
+
+    <main>
+                   <!-- Accueil -->
+        <section id="roles" data-view class="container">
+            <div class="hero">
+                <div class="hero-copy">
+                    <h1 class="title">Achetez local, livré partout en Guinée</h1>
+                    <p class="subtitle">Un marché en ligne simple et élégant : produits gourmands, paiement mobile money, suivi en temps réel.</p>
+                    <div class="cta-row">
+                        <a class="btn btn-primary" href="#categories">Explorer les produits</a>
+                        <a class="btn btn-ghost" href="#seller">Vendre sur Mangô</a>
+                    </div>
+                </div>
+                <div class="hero-ill">
+                    <img
+                        src="https://images.unsplash.com/photo-1598514982767-1a5cb364a7e2?q=80&w=1600&auto=format&fit=crop"
+                        alt="Produits du marché prêts à être livrés"
+                        referrerpolicy="no-referrer"
+                        onerror="this.onerror=null; this.src='https://picsum.photos/seed/mango-hero/1200/800';"
+                        >
+                </div>
+
+            </div>
+
+            <!-- Produit mis en avant (Accueil) -->
+            <div class="card" style="margin-top:12px">
+                <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                   <img
+                        src="https://images.unsplash.com/photo-1571171637578-0419d10e9458?q=80&w=600&auto=format&fit=crop"
+                        alt="Mangues de Kindia (1 kg)"
+                        style="width:120px;height:120px;border-radius:12px;object-fit:cover;border:1px solid #EEF0F6"
+                        referrerpolicy="no-referrer"
+                        onerror="this.onerror=null; this.src='https://picsum.photos/seed/mango-product/400/400';"
+                   />
+
+                    <div class="meta" style="flex:1;min-width:220px">
+                        <b style="display:block">Mangues de Kindia (1 kg)</b>
+                        <div class="muted">Livraison : Conakry, Mamou, N’Zérékoré</div>
+                        <div style="margin-top:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                            <span class="badge">35 000 GNF</span>
+                            <button class="btn btn-primary"
+                                onclick="(async()=>{ const p=await FakeApi.getProduct(1); addToCart(p,1); alert('Ajouté au panier'); location.hash='#cart'; })()">
+                                Ajouter
+                            </button>
+                            <a class="btn btn-ghost" href="#categories">Voir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catégories -->
+        <section id="categories" data-view class="container">
+            <div class="card">
+                <b>Catégories</b>
+                <div id="catList" class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:10px"></div>
+                <div id="catProducts" class="card-list" style="margin-top:12px"></div>
+            </div>
+        </section>
+
+        <!-- Produit (démo rapide) -->
+        <section id="product" data-view class="container">
+            <div class="grid grid-2">
+                <div class="card">
+                    <b id="prodName">Mangues de Kindia (1 kg)</b>
+                    <div class="muted" style="margin-top:4px">Stock: <span id="prodStock">—</span></div>
+                    <div style="margin-top:8px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                        <span id="prodPrice" style="font-weight:700">—</span>
+                        <span id="prodOldPrice" class="muted" style="text-decoration:line-through">—</span>
+                    </div>
+                    <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+                        <input id="qty" type="number" min="1" value="1" class="input" style="width:110px">
+                        <button id="addToCart" class="btn btn-primary">Ajouter au panier</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <b>Détails</b>
+                    <p class="muted">Produit démo, origine Kindia. Livraison : Conakry, Mamou, N’Zérékoré.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vendeur -->
+        <section id="seller" data-view class="container">
+            <div class="grid grid-2">
+                <form id="sellerForm" class="card">
+                    <b>Devenir vendeur</b>
+                    <div style="display:grid;gap:10px;margin-top:10px">
+                        <input class="input" name="shop" placeholder="Nom de la boutique *">
+                        <select class="select" name="city">
+                            <option>Conakry</option><option>Kindia</option><option>Labé</option><option>Mamou</option><option>Kankan</option><option>N’Zérékoré</option><option>Boké</option>
+                        </select>
+                        <input class="input" name="phone" placeholder="Téléphone *" inputmode="tel">
+                        <input class="input" name="zones" placeholder="Zones de livraison (ex: Conakry, Mamou, N’Zérékoré)">
+                        <input class="input" name="cats" placeholder="Catégories (ex: Agro, Mode)">
+                        <input class="input" name="product" placeholder="Produit principal (ex: Mangues)">
+                        <button class="btn btn-primary" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+                <div class="card">
+                    <b>Résumé vendeur</b>
+                    <div class="card" id="sellerReviews" style="margin-top:12px">
+                         <b>Avis sur les vendeurs</b>
+                         <div class="muted" style="margin-top:6px">Aucun avis pour le moment.</div>
+                    </div>
+
+                    <div id="sellerOut" class="muted" style="margin-top:10px">Aucune information enregistrée pour l’instant.</div>
+                </div>
+            </div>
+            <!-- ===== Toolbar Vendeur ===== -->
+            <div class="card" style="margin-top:16px">
+              <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+                <input id="sellerSearch" class="input" placeholder="Rechercher un vendeur…" style="flex:2; min-width:220px">
+                <select id="sellerCity" class="input" style="flex:1; min-width:160px">
+                  <option value="">Toutes les villes</option>
+                  <option>Conakry</option>
+                  <option>Kindia</option>
+                  <option>Labé</option>
+                  <option>Mamou</option>
+                  <option>Boké</option>
+                  <option>Kankan</option>
+                  <option>N’Zérékoré</option>
+                </select>
+                <select id="sellerSort" class="input" style="flex:1; min-width:160px">
+                  <option value="top">Top (note puis nombre d’avis)</option>
+                  <option value="alpha">Alphabétique</option>
+                  <option value="city">Par ville</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- ===== Liste Vendeurs ===== -->
+            <div id="sellerList" style="margin-top:12px; display:grid; gap:10px"></div>
+
+            <!-- ===== Pagination Vendeur ===== -->
+            <div style="display:flex; align-items:center; gap:10px; margin-top:8px">
+              <button id="sellerPrev" class="btn btn-ghost">« Précédent</button>
+              <span id="sellerPageInfo" class="muted">1 / 1</span>
+              <button id="sellerNext" class="btn btn-ghost">Suivant »</button>
+            </div>
+
+        </section>
+
+        <!-- Chauffeur -->
+        <section id="driver" data-view class="container">
+            <div class="grid grid-2">
+                <form id="driverForm" class="card">
+                    <b>Profil chauffeur</b>
+                    <div style="display:grid;gap:10px;margin-top:10px">
+                        <input class="input" name="name" placeholder="Nom complet *">
+                        <input class="input" name="phone" placeholder="Téléphone *" inputmode="tel">
+                        <select class="select" name="vehicle">
+                            <option>Moto</option><option>Vélo</option><option>Voiture</option><option>Camion</option>
+                        </select>
+                        <input class="input" name="zones" placeholder="Zones (ex: Conakry, Kindia, Mamou)">
+                        <label class="switch"><input type="checkbox" name="active"> Disponible</label>
+                        <button class="btn btn-primary" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+                <div class="card">
+                    <b>Résumé chauffeur</b>
+                    <div id="driverOut" class="muted" style="margin-top:10px">Aucune information enregistrée pour l’instant.</div>
+                </div>
+            </div>
+            <!-- ===== Toolbar Chauffeur ===== -->
+            <div class="card" style="margin-top:16px">
+              <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+                <input id="driverSearch" class="input" placeholder="Rechercher un chauffeur…" style="flex:2; min-width:220px">
+                <select id="driverZone" class="input" style="flex:1; min-width:160px">
+                  <option value="">Toutes les zones</option>
+                  <option>Conakry</option>
+                  <option>Kindia</option>
+                  <option>Labé</option>
+                  <option>Mamou</option>
+                  <option>Boké</option>
+                  <option>Kankan</option>
+                  <option>N’Zérékoré</option>
+                </select>
+                <select id="driverSort" class="input" style="flex:1; min-width:160px">
+                  <option value="top">Top (note puis nombre d’avis)</option>
+                  <option value="alpha">Alphabétique</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- ===== Liste Chauffeurs ===== -->
+            <div id="driverList" style="margin-top:12px; display:grid; gap:10px"></div>
+
+            <!-- ===== Pagination Chauffeur ===== -->
+            <div style="display:flex; align-items:center; gap:10px; margin-top:8px">
+              <button id="driverPrev" class="btn btn-ghost">« Précédent</button>
+              <span id="driverPageInfo" class="muted">1 / 1</span>
+              <button id="driverNext" class="btn btn-ghost">Suivant »</button>
+            </div>
+
+        </section>
+
+        <!-- Panier -->
+        <section id="cart" data-view class="container">
+            <div class="card">
+                <b>Panier</b>
+                <table class="table" style="margin-top:10px;width:100%">
+                    <thead><tr><th>Article</th><th>Prix</th><th>Qté</th><th>Total</th><th></th></tr></thead>
+                    <tbody id="cartItems"></tbody>
+                </table>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+                    <div><b>Total :</b> <span id="cartTotal">0 GNF</span></div>
+                    <a class="btn btn-primary" href="#checkout">Passer au paiement</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paiement -->
+        <section id="checkout" data-view class="container">
+            <div class="grid grid-2">
+                <div class="card">
+                    <b>Paiement</b>
+                    <div style="margin-top:10px">
+                        <label><input type="radio" name="payMethod" value="OM" checked> Orange Money</label>
+                        <label style="margin-left:10px"><input type="radio" name="payMethod" value="MTN"> MTN Mobile Money</label>
+                        <label style="margin-left:10px"><input type="radio" name="payMethod" value="COD"> Paiement à la livraison</label>
+                    </div>
+                    <div id="walletFields" style="margin-top:10px">
+                        <input id="payPhone" class="input" placeholder="Numéro de téléphone (ex : 62 00 00 00)">
+                        <div style="margin-top:8px"><button id="sendOtpBtn" class="btn btn-primary">Recevoir un code</button></div>
+                        <input id="otpInput" class="input" placeholder="Code reçu" style="display:none;margin-top:8px">
+                        <div style="margin-top:8px"><button id="confirmPaymentBtn" class="btn btn-primary" style="display:none">Confirmer</button></div>
+                        <div id="otpHint" class="muted" style="display:none;margin-top:6px"></div>
+                    </div>
+                    <div id="codFields" style="display:none;margin-top:10px">
+                        <button id="codConfirmBtn" class="btn btn-primary">Confirmer la commande</button>
+                    </div>
+                    <div id="checkoutMsg" class="muted" style="margin-top:8px"></div>
+                </div>
+                <div class="card">
+                    <b>Confirmation</b>
+                    <div id="orderSuccess" style="display:none;margin-top:8px">
+                        Commande <b id="orderId"></b> validée ✅ — Retrouvez-la dans <a href="#tracking">le suivi</a>.
+                    </div>
+                    <div class="muted">Après validation, un lien de suivi sera disponible.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suivi -->
+        <section id="tracking" data-view class="container">
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+                    <b>Suivi en temps réel</b>
+                    <div class="muted">Démo : Kindia → Conakry</div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
+                    <input id="trkOrderId" class="input" placeholder="ID commande">
+                    <button id="trkLoadLast" class="btn btn-ghost">Charger la dernière</button>
+                </div>
+                <div id="trkMap" class="leaflet-map" style="margin-top:10px"></div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
+                    <div id="trkDriver" class="muted">Chauffeur inconnu</div>
+                    <a id="trkCall" class="btn btn-ghost" href="tel:">Appeler</a>
+                </div>
+                <div style="margin-top:10px">
+                     <button class="btn btn-primary" id="openReview" type="button">Laisser un avis</button>
+                </div>
+
+                <div class="card" style="margin-top:10px">
+                    <div><b>Partager le suivi</b></div>
+                    <div class="grid" style="margin-top:8px">
+                        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                            <button class="btn btn-primary" id="shareBtn" type="button">Générer le lien & QR</button>
+                            <button class="btn btn-ghost" id="shareClose" type="button" style="display:none">Fermer</button>
+                        </div>
+                        <div id="sharePanel" style="display:none">
+                            <input id="shareLink" readonly class="input">
+                            <div id="qr" style="margin-top:10px"></div>
+                            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+                                <button class="btn btn-ghost" id="copyShare" type="button">Copier</button>
+                                <a class="btn btn-ghost" id="openShare" target="_blank" rel="noopener">Ouvrir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fiche vendeur -->
+        <section id="sellerDetail" data-view class="container">
+            <div id="sellerDetailBox" class="card"></div>
+            <div id="sellerDetailReviews" class="card" style="margin-top:12px"></div>
+        </section>
+
+        <!-- Fiche livreur -->
+        <section id="driverDetail" data-view class="container">
+            <div id="driverDetailBox" class="card"></div>
+            <div id="driverDetailReviews" class="card" style="margin-top:12px"></div>
+        </section>
+        <section id="equipe" style="margin-top: 40px; padding: 20px;">
+            <h2 style="text-align: center; margin-bottom: 24px;">L'équipe derrière Mangô</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+
+                <div class="card" style="max-width: 300px; text-align: center;">
+                    <img src="./tidiane.jpeg" alt="Ahmad Tidiane Bah" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--leaf-500);">
+                    <h3 style="margin: 0;">Ahmad Tidiane Bah</h3>
+                    <p class="muted" style="margin: 5px 0 10px;">Responsable Commercial & Terrain</p>
+                    <p style="font-size: 0.9rem;">Expert en logistique locale, il assure le lien entre les producteurs de Kindia et les consommateurs.</p>
+                </div>
+
+                <div class="card" style="max-width: 300px; text-align: center;">
+                    <img src="./ibrahima.jpeg" alt="Ahmad Tidiane Bah" style="width: 120px; height: 120px; border-radius: 50%; background: var(--leaf-100); color: var(--leaf-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.8rem; font-weight: bold; border: 3px solid var(--leaf-500);">
+                    <h3 style="margin: 0;">Ibrahima Bah</h3>
+                    <p class="muted" style="margin: 5px 0 10px;">Ingénieur & Développeur</p>
+                    <p style="font-size: 0.9rem;">Conçoit l'architecture technique et la base de données pour une application fluide et sécurisée.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="equipe" style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 20px;">
+            <h2 style="text-align: center; margin-bottom: 24px; color: var(--leaf-700);">L'équipe Mangô</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+
+                <div class="card" style="max-width: 300px; text-align: center; border: 1px solid var(--leaf-100); background: white;">
+                    <img src="./tidiane.jpeg" alt="Ahmad Tidiane Bah" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px; display: block; border: 3px solid var(--leaf-500);">
+                    <h3 style="margin: 0; color: #0f172a;">Ahmad Tidiane Bah</h3>
+                    <p style="display: inline-block; background: var(--leaf-100); color: var(--leaf-700); padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-top: 5px;">Commercial & Terrain</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #64748b;">Expert en logistique locale, il assure la relation directe avec les producteurs de la Guinée.</p>
+                </div>
+
+                <div class="card" style="max-width: 300px; text-align: center; border: 1px solid var(--leaf-100); background: white;">
+                    <img src="./Sylla.jpeg" alt="Ahmad Tidiane Bah" style="width: 120px; height: 120px; border-radius: 50%; background: var(--leaf-100); color: var(--leaf-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.8rem; font-weight: bold; border: 3px solid var(--leaf-500);">
+                    <h3 style="margin: 0; color: #0f172a;">Sylla Alpha Mamoudou</h3>
+                    <p style="display: inline-block; background: #e0e7ff; color: #4338ca; padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-top: 5px;">Ingénieur Solution</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #64748b;">Responsable de l'architecture technique, du développement PWA et de la base de données.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container copyright">© <span id="y"></span> Mangô</div>
+    </footer>
+
+        <!-- Modal Avis -->
+    <div id="reviewModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:1000">
+        <div style="max-width:520px;margin:10vh auto;background:#fff;border-radius:16px;border:1px solid #EEF0F6;padding:16px">
+            <b>Laisser un avis</b>
+            <div class="muted">Votre retour aide la communauté.</div>
+
+            <div style="margin-top:10px">
+                <label>Destinataire</label>
+                <select id="revTarget" class="select" style="width:100%">
+                    <option value="vendor">Vendeur</option>
+                    <option value="driver">Livreur</option>
+                </select>
+            </div>
+
+            <div style="margin-top:10px">
+                <label>Note</label>
+                <select id="revRating" class="select" style="width:100%">
+                    <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+                </select>
+            </div>
+
+            <textarea id="revComment" class="input" rows="4" placeholder="Votre commentaire..." style="margin-top:10px"></textarea>
+
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+                <button class="btn btn-ghost" onclick="document.getElementById('reviewModal').style.display='none'">Annuler</button>
+                <button class="btn btn-primary" id="revSubmit">Envoyer</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" crossorigin></script>
+
+    <script type="module">
+        /* =============== Utils & Router =============== */
+        const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+        const VIEW_IDS=['roles','categories','product','seller','driver','tracking','cart','checkout'];
+        /* === Simulation de mouvement pour la démo === */
+        let simInterval = null;
+
+        function simulateDelivery() {
+            // Coordonnées : [Latitude, Longitude]
+            const startPoint = [10.056, -12.865]; // Kindia
+            const endPoint = [9.537, -13.677];   // Conakry (Kaloum)
+
+            // Si la carte n'est pas encore prête, on attend
+            if (!window._map) {
+                window._map = L.map('trkMap').setView(startPoint, 9);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(window._map);
+            }
+
+            const driverIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/71/71422.png', // Icône moto/camion
+                iconSize: [32, 32]
+            });
+
+            let marker = L.marker(startPoint, {icon: driverIcon}).addTo(window._map);
+            let progress = 0;
+
+            // Nettoyage si une simulation tourne déjà
+            if (simInterval) clearInterval(simInterval);
+
+            simInterval = setInterval(() => {
+                progress += 0.01; // Avancement de 1% à chaque fois
+                if (progress > 1) {
+                    clearInterval(simInterval);
+                    toast("Livraison arrivée à destination !", "success");
+                    return;
+                }
+
+                // Calcul de la position intermédiaire (interpolation linéaire)
+                const lat = startPoint[0] + (endPoint[0] - startPoint[0]) * progress;
+                const lng = startPoint[1] + (endPoint[1] - startPoint[1]) * progress;
+
+                marker.setLatLng([lat, lng]);
+
+                // Mise à jour du texte de statut pour le jury
+                document.getElementById('trkDriver').innerHTML =
+                    `<b>Statut :</b> En route... (${Math.round(progress * 100)}%) <br> <b>Chauffeur :</b> Mamadou S.`;
+            }, 1000); // Mise à jour toutes les secondes
+        }
+
+        // Lancer la simulation quand on arrive sur l'onglet tracking
+        window.addEventListener('hashchange', () => {
+            if (location.hash === '#tracking') {
+                setTimeout(simulateDelivery, 500);
+            }
+        });
+        function prepareViews(){ VIEW_IDS.forEach(id=>{ const el=document.getElementById(id); if(el&&!el.hasAttribute('data-view')) el.setAttribute('data-view',''); }); }
+        function activeViewId(){ const h=(location.hash||'').replace('#',''); return VIEW_IDS.includes(h)?h:'roles'; }
+        function setActiveTab(id){ $$('.header-tabs [data-tab]').forEach(a=>{ const to=(a.getAttribute('href')||'').replace('#',''); a.classList.toggle('active', to===id); }); }
+        function showView(id){
+          prepareViews();
+          $$('[data-view]').forEach(el=> el.classList.toggle('active', el.id===id));
+          setActiveTab(id);
+          if(id==='tracking'){ setTimeout(()=>{ try{ window._map && window._map.invalidateSize(); }catch(e){} },150); }
+          window.scrollTo({top:0,behavior:'smooth'});
+        }
+        (function bootRouter(){ const sync=()=>showView(activeViewId()); window.addEventListener('hashchange', sync); prepareViews(); sync(); })();
+
+        /* Badge “DB: ON/LOCAL” */
+        function updateDbBadge(){
+          const footer=document.querySelector('footer .copyright'); if(!footer) return;
+          const el=document.getElementById('db-badge');
+          const frag=` · <span id="db-badge" class="muted">DB: ${window.supabase?'ON':'LOCAL'}</span>`;
+          if (el) el.outerHTML=frag; else footer.insertAdjacentHTML('beforeend',frag);
+        }
+
+        /* === Skeletons === */
+        function showSkeleton(targetEl, rows=6){
+          if(!targetEl) return;
+          targetEl.innerHTML = '';
+          for(let i=0;i<rows;i++){
+            const d = document.createElement('div');
+            d.className = 'skeleton-card';
+            d.innerHTML = `<div class="sk-img"></div>
+                           <div class="sk-lines"><div></div><div></div><div></div></div>`;
+            targetEl.appendChild(d);
+          }
+        }
+
+        /* === Toaster minimal (remplace les alert) === */
+        function toast(msg, type='info', ms=2400){
+          let box = document.getElementById('toasts');
+          if(!box){
+            box = document.createElement('div');
+            box.id='toasts';
+            box.style.cssText='position:fixed;right:12px;bottom:12px;display:grid;gap:8px;z-index:9999';
+            document.body.appendChild(box);
+          }
+          const el=document.createElement('div');
+          el.setAttribute('role','status');
+          el.setAttribute('aria-live','polite');
+          el.style.cssText='padding:10px 12px;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,.12);font:14px/1.3 system-ui;background:#fff;border:1px solid #EEF0F6';
+          if(type==='success') el.style.borderColor='#16a34a';
+          if(type==='error')   el.style.borderColor='#dc2626';
+          el.textContent=msg;
+          box.appendChild(el);
+          setTimeout(()=> el.remove(), ms);
+        }
+
+        /* Notes helpers */
+        async function getVendorRatings(ids){
+          const out = {};
+          if (!ids || !ids.length) return {};
+          if (supabase){
+            const { data, error } = await supabase
+              .from('reviews')
+              .select('subject_id, rating')
+              .eq('subject_type', 'vendor')
+              .in('subject_id', ids.map(String));
+            if (!error && Array.isArray(data)){
+              for (const r of data){
+                const k = String(r.subject_id);
+                if (!out[k]) out[k] = { sum: 0, count: 0 };
+                out[k].sum   += Number(r.rating || 0);
+                out[k].count += 1;
+              }
+            }
+          } else {
+            const pool = (JSON.parse(localStorage.getItem('mango_demo_reviews')||'[]') || [])
+              .filter(r => r.subject_type === 'vendor' && ids.includes(String(r.subject_id)));
+            for (const r of pool){
+              const k = String(r.subject_id);
+              if (!out[k]) out[k] = { sum: 0, count: 0 };
+              out[k].sum   += Number(r.rating || 0);
+              out[k].count += 1;
+            }
+          }
+          const res = {};
+          for (const [k, v] of Object.entries(out)){
+            res[k] = { avg: v.count ? (v.sum / v.count) : 0, count: v.count };
+          }
+          return res;
+        }
+
+        // --- debounce ---
+        function debounce(fn, wait=300){
+          let t;
+          return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), wait); };
+        }
+
+        function stars(n){ n=Math.round(n||0); return '★'.repeat(n)+'☆'.repeat(5-n); }
+
+        /* =============== Supabase (optionnel) =============== */
+        const SUPABASE_URL  = 'https://szxlaupeoaxzlcbesvpi.supabase.co';
+        const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6eGxhdXBlb2F4emxjYmVzdnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5OTQyOTIsImV4cCI6MjA3NDU3MDI5Mn0.1c7m2BPEZ6VNmWIrtfoW4Gwa_yAP4vgOolkkK_BiSIE';
+        let supabase = null;
+        updateDbBadge(); // badge initial
+
+        (async ()=>{
+          const SUPA_OK =
+            /^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(SUPABASE_URL) &&
+            !/[<>{}]/.test(SUPABASE_ANON) &&
+            !SUPABASE_ANON.includes('VOTRE-');
+          if (SUPA_OK){
+            const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+            supabase = window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
+            updateDbBadge();
+
+            (async () => {
+              try {
+                const hasAuthStuff =
+                  location.hash.includes('access_token') ||
+                  location.search.includes('code') ||
+                  location.search.includes('token_hash') ||
+                  location.search.includes('type=');
+                const { data: { session } } = await supabase.auth.getSession();
+                if (!session && hasAuthStuff) {
+                  await supabase.auth.exchangeCodeForSession(window.location.href).catch(()=>{});
+                }
+              } finally {
+                window.dispatchEvent(new Event('supabase-ready'));
+              }
+            })();
+          }
+        })();
+
+        /* ---- UI Auth minimal (email magic link) ---- */
+        (function authUi(){
+          const bar = document.querySelector('.actions');
+          if (!bar) return;
+
+          const who = document.createElement('span');
+          who.className = 'muted';
+          who.style.marginRight = '6px';
+
+          const loginBtn = document.createElement('button');
+          loginBtn.className = 'btn btn-ghost';
+          loginBtn.textContent = 'Se connecter';
+
+          const logoutBtn = document.createElement('button');
+          logoutBtn.className = 'btn btn-ghost';
+          logoutBtn.textContent = 'Se déconnecter';
+          logoutBtn.style.display = 'none';
+
+          bar.insertBefore(logoutBtn, bar.firstChild);
+          bar.insertBefore(loginBtn, bar.firstChild);
+          bar.insertBefore(who, bar.firstChild);
+
+          async function refreshAuthUi(){
+            if (!window.supabase) {
+              logoutBtn.style.display = 'none';
+              who.textContent = '';
+              return;
+            }
+            const { data: { session } } = await supabase.auth.getSession();
+            const on = !!session?.user;
+            loginBtn.style.display = on ? 'none' : '';
+            logoutBtn.style.display = on ? '' : 'none';
+            who.textContent = on ? `Bonjour, ${session.user.email || session.user.phone || 'utilisateur'}` : '';
+            updateDbBadge?.();
+          }
+
+          loginBtn.addEventListener('click', async ()=>{
+            if (!supabase) return toast('Base non connectée (DB: LOCAL).','error');
+            const email = prompt("Entrez votre email pour recevoir un lien de connexion :");
+            if (!email) return;
+            const PROD_URL = 'https://lambent-selkie-566f2d.netlify.app/';
+            const DEV_URL  = 'http://localhost:5500';
+            const emailRedirectTo =
+              (location.hostname === 'localhost' || location.hostname.startsWith('127.'))
+              ? DEV_URL
+              : PROD_URL;
+
+            const { error } = await supabase.auth.signInWithOtp({
+              email,
+              options: { emailRedirectTo }
+            });
+
+            if (error) return toast(error.message,'error');
+            toast("Lien envoyé ! Vérifiez votre email puis revenez sur le site.",'success');
+          });
+
+          logoutBtn.addEventListener('click', async ()=>{
+            await supabase?.auth.signOut().catch(()=>{});
+            refreshAuthUi();
+          });
+
+          window.addEventListener('supabase-ready', refreshAuthUi);
+          supabase?.auth.onAuthStateChange(()=>{ refreshAuthUi(); });
+          refreshAuthUi();
+        })();
+
+        /* =============== Thème + header shrink =============== */
+        (function(){
+          const themeBtn=$('#themeToggle'), themeColorMeta=$('#themeColor');
+          function applyTheme(mode){
+            if(mode==='dark'){
+              document.documentElement.setAttribute('data-theme','dark');
+              themeBtn&&(themeBtn.textContent='☀️ Mode');
+              themeColorMeta&&themeColorMeta.setAttribute('content','#0B1220');
+            } else {
+              document.documentElement.removeAttribute('data-theme');
+              themeBtn&&(themeBtn.textContent='🌙 Mode');
+              themeColorMeta&&themeColorMeta.setAttribute('content','#ffffff');
+            }
+          }
+          let saved=localStorage.getItem('mango_theme'); applyTheme(saved);
+          themeBtn&&themeBtn.addEventListener('click',()=>{ saved=saved==='dark'?null:'dark'; saved?localStorage.setItem('mango_theme',saved):localStorage.removeItem('mango_theme'); applyTheme(saved); });
+
+          const skinBtn=$('#skinToggle');
+          function applySkin(s){ if(s==='ultra'){ document.documentElement.setAttribute('data-skin','ultra'); skinBtn&&(skinBtn.textContent='◐ Classique'); } else { document.documentElement.removeAttribute('data-skin'); skinBtn&&(skinBtn.textContent='◑ Minimal'); } }
+          let skin=localStorage.getItem('mango_skin'); applySkin(skin);
+          skinBtn&&skinBtn.addEventListener('click',()=>{ skin=skin==='ultra'?null:'ultra'; skin?localStorage.setItem('mango_skin',skin):localStorage.removeItem('mango_skin'); applySkin(skin); });
+
+          const sh=document.querySelector('.site-header');
+          const onScroll=()=> (window.scrollY>8)? sh.classList.add('shrink') : sh.classList.remove('shrink');
+          onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+          const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();
+        })();
+
+        /* =============== Données démo (produits) =============== */
+        const FakeApi={
+          products:[
+            {id:1,name:'Mangues de Kindia (1 kg)',price:35000,oldPrice:40000,currency:'GNF',stock:23,sellerId:101,city:['Kindia','Conakry','Mamou','N’Zérékoré'],cat:'agro',img:'https://images.unsplash.com/photo-1571171637578-0419d10e9458?q=80&w=400&auto=format&fit=crop'},
+            {id:2,name:'Ananas de Boké (1 pc)',price:28000,oldPrice:32000,currency:'GNF',stock:18,sellerId:102,city:['Boké','Conakry','Kindia'],cat:'agro',img:'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?q=80&w=400&auto=format&fit=crop'},
+            {id:3,name:'Pagne Wax (2 yds)',price:95000,oldPrice:110000,currency:'GNF',stock:12,sellerId:201,city:['Conakry','Labé','Mamou'],cat:'mode',img:'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400&auto=format&fit=crop'},
+            {id:4,name:'Tapis artisanal',price:240000,oldPrice:260000,currency:'GNF',stock:5,sellerId:301,city:['Labé','Mamou','Conakry'],cat:'artisanat',img:'https://images.unsplash.com/photo-1582582429416-78b039299f6b?q=80&w=400&auto=format&fit=crop'},
+            {id:5,name:'Chargeur USB 2A',price:65000,oldPrice:70000,currency:'GNF',stock:40,sellerId:401,city:['Conakry','Kindia'],cat:'electronique',img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=400&auto=format&fit=crop'},
+            {id:6,name:'Savon Karité (lot x3)',price:52000,oldPrice:60000,currency:'GNF',stock:30,sellerId:501,city:['Kankan','Conakry','N’Zérékoré'],cat:'beaute',img:'https://images.unsplash.com/photo-1585386959984-a41552231678?q=80&w=400&auto=format&fit=crop'}
+          ],
+          async getProduct(id){ return JSON.parse(JSON.stringify(this.products.find(p=>p.id==id))); },
+          async listProducts(catId=null){ const arr = catId ? this.products.filter(p=>p.cat===catId) : this.products; return JSON.parse(JSON.stringify(arr)); },
+          async createOrder(payload){ const orderId='MGO-'+Math.floor(Math.random()*900000+100000); const status=payload.payment.method==='COD'?'CONFIRMED':'PENDING_OTP'; return {orderId,status,createdAt:Date.now(),...payload}; },
+          async verifyOtp({orderId,code,expected}){ if(String(code)===String(expected)) return {orderId,status:'PAID'}; throw new Error('Code invalide'); }
+        };
+
+        /* =============== Panier =============== */
+        let cart=[]; try{ cart=JSON.parse(localStorage.getItem('mango_cart')||'[]'); }catch{ cart=[]; }
+        function saveCart(){ localStorage.setItem('mango_cart', JSON.stringify(cart)); }
+        function cartCount(){ return cart.reduce((a,i)=>a+i.qty,0); }
+        function renderCart(){
+          const tbody=$('#cartItems'); if(!tbody) return;
+          tbody.innerHTML='';
+          cart.forEach((it,idx)=>{
+            const tr=document.createElement('tr');
+            tr.innerHTML=`<td>${it.name}</td>
+                <td>${new Intl.NumberFormat('fr-GN').format(it.price)} GNF</td>
+                <td><input type="number" min="1" value="${it.qty}" class="input" style="width:90px"></td>
+                <td>${new Intl.NumberFormat('fr-GN').format(it.qty*it.price)} GNF</td>
+                <td><button class="btn btn-ghost">Retirer</button></td>`;
+            const qty=tr.querySelector('input');
+            qty.addEventListener('change',()=>{ it.qty=Math.max(1,parseInt(qty.value||'1',10)); saveCart(); renderCart(); });
+            tr.querySelector('button').addEventListener('click',()=>{ cart.splice(idx,1); saveCart(); renderCart(); });
+            tbody.appendChild(tr);
+          });
+          const c=document.querySelector('#cartCount'); if(c) c.textContent=String(cartCount());
+          const totalEl=$('#cartTotal'); if(totalEl){ totalEl.textContent=new Intl.NumberFormat('fr-GN').format(cart.reduce((a,i)=>a+i.qty*i.price,0))+' GNF'; }
+        }
+        function addToCart(prod, qty=1){ const ex=cart.find(i=>i.id===prod.id); if(ex) ex.qty+=qty; else cart.push({id:prod.id,name:prod.name,price:prod.price,qty}); saveCart(); renderCart(); const c=document.querySelector('#cartCount'); if(c) c.textContent=String(cartCount()); }
+
+        /* Helpers badges notes */
+        function ratingClass(avg){ if(!(avg>0)) return ''; if(avg>=4) return 'success'; if(avg>=3) return 'warning'; return 'danger'; }
+        function ratingBadge(avg, count){
+          if(!count) return '<span class="badge">—</span>';
+          const mkStars = (typeof stars==='function' ? stars : (n)=>'★'.repeat(Math.round(n||0))+'☆'.repeat(5-Math.round(n||0)));
+          const text = `${mkStars(avg)} (${count})`;
+          const cls = ratingClass(avg);
+          const style =
+            cls==='success' ? 'background:#10b981;color:#fff'
+          : cls==='warning' ? 'background:#f59e0b;color:#fff'
+                            : 'background:#ef4444;color:#fff';
+          return `<span class="badge ${cls}" style="${style}">${text}</span>`;
+        }
+
+        /* =============== Catégories =============== */
+        (async function bootCategories(){
+          const list=$('#catList'), prodWrap=$('#catProducts'); if(!list||!prodWrap) return;
+          const cats=[{id:'agro',name:'Frais & Agro',emoji:'🥭'},{id:'artisanat',name:'Artisanat',emoji:'🧶'},{id:'mode',name:'Mode',emoji:'👗'},{id:'electronique',name:'Électronique',emoji:'🔌'},{id:'maison',name:'Maison',emoji:'🏠'},{id:'beaute',name:'Beauté',emoji:'💄'}];
+          cats.forEach(cat=>{ const a=document.createElement('a'); a.href='#categories'; a.className='badge'; a.dataset.cat=cat.id; a.textContent=`${cat.emoji} ${cat.name}`; list.appendChild(a); });
+
+          async function load(catId=null){
+            showSkeleton(prodWrap, 6);
+            const prods = await FakeApi.listProducts(catId);
+            prodWrap.innerHTML='';
+            if(!prods.length){ prodWrap.innerHTML='<div class="muted">Aucun produit dans cette catégorie.</div>'; return; }
+
+            const ids = [...new Set(prods.map(p=>String(p.sellerId)))];
+            const ratings = await getVendorRatings(ids); // { sellerId: {avg,count} }
+
+            prods.forEach(p=>{
+              const r = ratings[String(p.sellerId)] || {avg:0,count:0};
+              const noteBadge = ratingBadge(r.avg, r.count);
+              const card=document.createElement('div');
+              card.className='product-card';
+              card.innerHTML=`
+                <img src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mango-${p.id}/160/160'"/>
+                <div class="meta">
+                  <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap">
+                    <b>${p.name}</b>
+                    <span class="badge">${new Intl.NumberFormat('fr-GN').format(p.price)} ${p.currency}</span>
+                  </div>
+                  <div class="muted" style="margin-top:4px">Livraison : ${p.city.join(', ')}</div>
+                  <div class="muted" style="margin-top:4px">Note vendeur : ${noteBadge}</div>
+                </div>
+                <button class="btn btn-primary">Ajouter</button>`;
+              card.querySelector('button').addEventListener('click',()=> addToCart(p,1));
+              prodWrap.appendChild(card);
+            });
+          }
+
+          list.addEventListener('click',(e)=>{ const a=e.target.closest('[data-cat]'); if(!a) return; e.preventDefault(); $$('#catList .badge').forEach(x=>x.classList.remove('success')); a.classList.add('success'); load(a.dataset.cat); });
+          await load(null);
+
+          // Recharger quand Supabase devient prêt (pour récupérer les notes réelles)
+          window.addEventListener('supabase-ready', () => {
+            const selected = document.querySelector('#catList .badge.success');
+            const cat = selected?.dataset?.cat || null;
+            load(cat);
+          });
+        })();
+
+        /* =============== Produit (démo) =============== */
+        (async ()=>{
+          const p=await FakeApi.getProduct(1);
+          if(p){
+            $('#prodName').textContent=p.name;
+            $('#prodPrice').textContent=new Intl.NumberFormat('fr-GN').format(p.price)+' GNF';
+            $('#prodOldPrice').textContent=new Intl.NumberFormat('fr-GN').format(p.oldPrice)+' GNF';
+            $('#prodStock').textContent=String(p.stock);
+          }
+          $('#addToCart')?.addEventListener('click',()=>{
+            const qty=Math.max(1, parseInt(($('#qty')?.value)||'1',10));
+            addToCart(p, qty); toast('Ajouté au panier.','success'); location.hash='#cart';
+          });
+        })();
+
+        /* =============== Paiement =============== */
+        (function bootCheckout(){
+          const payRadios=$$('input[name="payMethod"]');
+          const phoneInput=$('#payPhone');
+          const sendOtpBtn=$('#sendOtpBtn');
+          const otpInput=$('#otpInput');
+          const confirmPaymentBtn=$('#confirmPaymentBtn');
+          const codConfirmBtn=$('#codConfirmBtn');
+          const otpHint=$('#otpHint');
+          const checkoutMsg=$('#checkoutMsg');
+          const orderSuccess=$('#orderSuccess');
+          const orderIdEl=$('#orderId');
+          let state={method:'OM',order:null,otp:null};
+
+          function setMethod(val){
+            state.method=val;
+            const wallet=$('#walletFields'); const cod=$('#codFields');
+            if(val==='COD'){ wallet.style.display='none'; cod.style.display='block'; }
+            else { wallet.style.display='block'; cod.style.display='none'; }
+            otpInput.style.display='none'; confirmPaymentBtn.style.display='none'; otpHint.style.display='none';
+          }
+          payRadios.forEach(r=> r.addEventListener('change', e=> setMethod(e.target.value))); setMethod('OM');
+
+          sendOtpBtn&&sendOtpBtn.addEventListener('click', async ()=>{
+            checkoutMsg.textContent='';
+            if(!phoneInput.value.trim()){ phoneInput.focus(); return toast('Entrez votre numéro.','error'); }
+            const items=[]; for(const c of cart){ const p=FakeApi.products.find(p=>p.id===c.id); if(!p) continue; const qty=Math.max(1,Math.min(c.qty,p.stock)); items.push({productId:p.id,name:p.name,price:p.price,currency:p.currency,qty,subtotal:p.price*qty,sellerId:p.sellerId}); }
+            const total=items.reduce((a,i)=>a+i.subtotal,0); if(!items.length) return toast('Panier vide.','error');
+            const payment={method:'WALLET',provider:state.method,phone:phoneInput.value.trim()};
+            const order=await FakeApi.createOrder({items,total,payment});
+            state.order=order; state.otp=Math.floor(1000+Math.random()*9000);
+            otpInput.style.display='inline-flex'; confirmPaymentBtn.style.display='inline-flex'; otpHint.style.display='block';
+            otpHint.textContent=`Code envoyé (démo): ${state.otp}`;
+            checkoutMsg.textContent=`Commande ${order.orderId} en attente de validation.`;
+          });
+
+          confirmPaymentBtn&&confirmPaymentBtn.addEventListener('click', async ()=>{
+            try{ await FakeApi.verifyOtp({orderId:state.order?.orderId, code: otpInput.value.trim(), expected: state.otp}); finalize('PAID'); }
+            catch(err){ toast(err.message||'Code invalide','error'); }
+          });
+
+          codConfirmBtn&&codConfirmBtn.addEventListener('click', async ()=>{
+            const items=[]; for(const c of cart){ const p=FakeApi.products.find(p=>p.id===c.id); if(!p) continue; const qty=Math.max(1,Math.min(c.qty,p.stock)); items.push({productId:p.id,name:p.name,price:p.price,currency:p.currency,qty,subtotal:p.price*qty,sellerId:p.sellerId}); }
+            const total=items.reduce((a,i)=>a+i.subtotal,0); if(!items.length) return toast('Panier vide.','error');
+            const payment={method:'COD'}; const order=await FakeApi.createOrder({items,total,payment}); state.order=order; finalize('CONFIRMED');
+          });
+
+          function finalize(status){
+            const order=state.order; if(!order) return;
+            const saved=JSON.parse(localStorage.getItem('mango_orders')||'[]');
+            saved.push({orderId:order.orderId,status,createdAt:order.createdAt,total:order.total});
+            localStorage.setItem('mango_orders', JSON.stringify(saved));
+            orderIdEl.textContent=order.orderId;
+            orderSuccess.style.display='block';
+
+            const origin='Kindia', dest='Conakry';
+            const driver = JSON.parse(localStorage.getItem('mango_driver')||'null')
+              || { name:'Alpha Camara', phone:'620000000', vehicle:'Moto' };
+            const vendorId = (order.items && order.items[0]?.sellerId) || 'VENDOR_DEMO';
+
+            localStorage.setItem('mango_last_tracking',
+              JSON.stringify({ orderId: order.orderId, origin, dest, driver, vendor_id: vendorId })
+            );
+
+            (async ()=>{
+              if (!supabase) return;
+              const { data: { session } } = await supabase.auth.getSession();
+              const me = session?.user?.id;
+              if (!me) return;
+
+              await supabase.from('orders')
+                .insert({ id: order.orderId, client_id: me })
+                .select().single().catch(()=>{});
+
+              await supabase.from('order_participants')
+                .insert({ order_id: order.orderId, profile_id: me, role: 'client' })
+                .catch(()=>{});
+            })();
+          }
+        })();
+
+        /* =============== Seller =============== */
+        (function bootSeller(){
+          const form=$('#sellerForm'); const out=$('#sellerOut'); if(!form||!out) return;
+          try{
+            const s=JSON.parse(localStorage.getItem('mango_seller')||'null');
+            if(s){ form.shop.value=s.shop||''; form.city.value=s.city||'Conakry'; form.phone.value=s.phone||''; form.zones.value=(s.zones||[]).join(', '); form.cats.value=(s.cats||[]).join(', '); form.product.value=s.product||''; }
+          }catch{}
+          form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const data={
+              shop:form.shop.value.trim(), city:form.city.value, phone:form.phone.value.trim(),
+              zones:form.zones.value.split(',').map(s=>s.trim()).filter(Boolean),
+              cats:form.cats.value.split(',').map(s=>s.trim()).filter(Boolean),
+              product:form.product.value.trim()
+            };
+            if(!data.shop||!data.phone) return toast('Nom de boutique et téléphone requis.','error');
+            localStorage.setItem('mango_seller', JSON.stringify(data));
+            const url=new URL(location.href); url.hash='#seller'; url.searchParams.set('shop', data.shop);
+            out.innerHTML=`<div class="badge success">Enregistré</div>
+              <div style="margin-top:8px"><b>${data.shop}</b> — ${data.city}</div>
+              <div class="muted">Zones: ${data.zones.join(', ')||'—'}</div>
+              <div class="muted">Catégories: ${data.cats.join(', ')||'—'}</div>
+              <div class="muted">Tel: <a href="tel:${data.phone}">${data.phone}</a></div>
+              <div class="muted">Produit principal: ${data.product||'—'}</div>
+              <div style="margin-top:8px"><input class="input" value="${url.toString()}" readonly></div>`;
+          });
+        })();
+
+        /* =============== Driver =============== */
+        (function bootDriver(){
+          const form=$('#driverForm'); const out=$('#driverOut'); if(!form||!out) return;
+          try{
+            const d=JSON.parse(localStorage.getItem('mango_driver')||'null');
+            if(d){ form.name.value=d.name||''; form.phone.value=d.phone||''; form.vehicle.value=d.vehicle||'Moto'; form.zones.value=(d.zones||[]).join(', '); form.active.checked=!!d.active; }
+          }catch{}
+          form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const data={ name:form.name.value.trim(), phone:form.phone.value.trim(), vehicle:form.vehicle.value,
+              zones:form.zones.value.split(',').map(s=>s.trim()).filter(Boolean), active:form.active.checked };
+            if(!data.name||!data.phone) return toast('Nom et téléphone requis.','error');
+            localStorage.setItem('mango_driver', JSON.stringify(data));
+            out.innerHTML=`<div class="badge success">${data.active?'Disponible':'Indisponible'}</div>
+              <div style="margin-top:8px"><b>${data.name}</b> — ${data.vehicle}</div>
+              <div class="muted">Zones: ${data.zones.join(', ')||'—'}</div>
+              <div class="muted">Tel: <a href="tel:${data.phone}">${data.phone}</a></div>
+              <div style="margin-top:8px"><button id="seedTrack" class="btn btn-primary">Accepter une course (démo)</button></div>`;
+            document.getElementById('seedTrack')?.addEventListener('click', ()=>{
+              const orderId='MGO-DEMO-'+Math.floor(Math.random()*9000+1000);
+              localStorage.setItem('mango_last_tracking', JSON.stringify({ orderId, origin:'Kindia', dest:'Conakry', driver:data }));
+              location.hash='#tracking'; toast('Course démo affectée. Ouvrez l’onglet Suivi.','success');
+            });
+          });
+        })();
+
+        /* =============== Tracking (Leaflet + OSRM) =============== */
+        (function bootTracking(){
+          const el=document.getElementById('trkMap'); if(!el) return;
+          if(!window._map){
+            window._map=L.map(el);
+            const streets=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors'}).addTo(window._map);
+            const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri'});
+            L.control.layers({'Rues (OSM)':streets,'Satellite (Esri)':sat},{}).addTo(window._map);
+            window._map.setView([9.9,-12.9],7);
+          }
+          const City={ 'Conakry':{lat:9.6412,lng:-13.5784}, 'Kindia':{lat:10.0600,lng:-12.8700}, 'Boké':{lat:10.9395,lng:-14.2900}, 'Labé':{lat:11.3180,lng:-12.2890}, 'Mamou':{lat:10.3753,lng:-12.0870}, 'Kankan':{lat:10.3855,lng:-9.3050}, 'N’Zérékoré':{lat:7.7562,lng:-8.8177} };
+          function haversine(a,b){ const toRad=d=>d*Math.PI/180,R=6371; const dLat=toRad(b.lat-a.lat), dLng=toRad(b.lng-a.lng); const lat1=toRad(a.lat), lat2=toRad(b.lat); const h=Math.sin(dLat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(Math.abs(dLng)/2)**2; return 2*R*Math.asin(Math.sqrt(h)); }
+          async function drawRoute(o,d){
+            const url=`https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson`;
+            const res=await fetch(url); if(!res.ok) throw new Error('OSRM indisponible');
+            const data=await res.json();
+            const coords=data.routes?.[0]?.geometry?.coordinates||[];
+            const latlngs=coords.map(([lng,lat])=>[lat,lng]);
+            if(window._route) window._route.remove();
+            window._route=L.polyline(latlngs,{weight:6}).addTo(window._map);
+            if(window._origin) window._origin.remove(); if(window._dest) window._dest.remove(); if(window._driver) window._driver.remove();
+            window._origin=L.marker([o.lat,o.lng]).addTo(window._map);
+            window._dest=L.marker([d.lat,d.lng]).addTo(window._map);
+            window._driver=L.circleMarker(latlngs[0]||[o.lat,o.lng],{radius:8}).addTo(window._map);
+            window._map.fitBounds(window._route.getBounds().pad(0.25));
+            const cum=[0]; for(let i=1;i<latlngs.length;i++){ cum[i]=cum[i-1]+haversine({lat:latlngs[i-1][0],lng:latlngs[i-1][1]},{lat:latlngs[i][0],lng:latlngs[i][1]}); }
+            const total=cum.at(-1)||0; let traveled=0; const speedKmh=35;
+            if(window._sim) clearInterval(window._sim);
+            window._sim=setInterval(()=>{
+              traveled=Math.min(total, traveled+speedKmh/3600);
+              const i=cum.findIndex(v=>v>=traveled);
+              if(i<=0){ window._driver.setLatLng(latlngs[0]||[o.lat,o.lng]); return; }
+              const k0=cum[i-1], k1=cum[i]; const t=(traveled-k0)/Math.max(1e-6,(k1-k0));
+              const a=latlngs[i-1], b=latlngs[i];
+              window._driver.setLatLng([a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t]);
+              if(traveled>=total) clearInterval(window._sim);
+            },1000);
+          }
+          document.getElementById('trkLoadLast')?.addEventListener('click', async ()=>{
+            try{
+              const last=JSON.parse(localStorage.getItem('mango_last_tracking')||'null');
+              if(!last) return toast('Aucune commande trouvée.','error');
+              document.getElementById('trkOrderId').value=last.orderId||'';
+              const origin=City[last.origin]||City['Kindia']; const dest=City[last.dest]||City['Conakry'];
+              if(last.driver){
+                document.getElementById('trkDriver').textContent=`${last.driver.name} • ${last.driver.vehicle||'Moto'}`;
+                document.getElementById('trkCall')?.setAttribute('href', `tel:${last.driver.phone||''}`);
+              }
+              await drawRoute(origin,dest);
+            }catch(e){ toast('Erreur de chargement.','error'); }
+          });
+          (async function fromURL(){
+            const p=new URLSearchParams(location.search);
+            if(p.has('track')){
+              document.getElementById('trkOrderId').value=p.get('track');
+              const o=p.get('origin'); const d=p.get('dest'); const drv=p.get('driver');
+              if(drv) document.getElementById('trkDriver').textContent=`${drv} • Moto`;
+              await drawRoute(City[o]||City['Kindia'], City[d]||City['Conakry']);
+            }
+          })();
+          const shareBtn=document.getElementById('shareBtn'); const shareClose=document.getElementById('shareClose');
+          const sharePanel=document.getElementById('sharePanel'); const shareLink=document.getElementById('shareLink');
+          const copyShare=document.getElementById('copyShare'); const openShare=document.getElementById('openShare'); const qrWrap=document.getElementById('qr');
+          function buildShareUrl(){
+            const oid=(document.getElementById('trkOrderId')?.value||'').trim();
+            if(!oid){ toast('Chargez une commande puis réessayez.','error'); return null; }
+            const url=new URL(location.href);
+            const last=JSON.parse(localStorage.getItem('mango_last_tracking')||'null')||{};
+            url.searchParams.set('track', oid);
+            url.searchParams.set('origin', last.origin||'Kindia');
+            url.searchParams.set('dest', last.dest||'Conakry');
+            if(last.driver?.name) url.searchParams.set('driver', last.driver.name);
+            url.hash='#tracking';
+            return url.toString();
+          }
+          shareBtn&&shareBtn.addEventListener('click', async ()=>{
+            const url=buildShareUrl(); if(!url) return;
+            sharePanel.style.display='block'; shareClose.style.display='inline-flex';
+            shareLink.value=url; openShare.href=url; qrWrap.innerHTML='';
+            try{ const canvas=await window.QRCode.toCanvas(url,{scale:4}); qrWrap.appendChild(canvas); }
+            catch{ qrWrap.textContent='QR indisponible'; }
+          });
+          shareClose&&shareClose.addEventListener('click', ()=>{ sharePanel.style.display='none'; shareClose.style.display='none'; });
+          copyShare&&copyShare.addEventListener('click', ()=>{ if(!shareLink.value) return; navigator.clipboard?.writeText(shareLink.value); copyShare.textContent='Copié !'; setTimeout(()=> copyShare.textContent='Copier',1200); });
+        })();
+
+        /* =============== Init =============== */
+        showView(activeViewId());
+        renderCart();
+        const cc=document.getElementById('cartCount'); if(cc) cc.textContent=String(cartCount());
+
+        /* =============== Avis (modal + affichage) =============== */
+        const openReviewBtn = document.getElementById('openReview');
+        const reviewModal  = document.getElementById('reviewModal');
+        const revTarget = document.getElementById('revTarget');
+        const revRating = document.getElementById('revRating');
+        const revComment = document.getElementById('revComment');
+        const revSubmit  = document.getElementById('revSubmit');
+
+        openReviewBtn?.addEventListener('click', ()=> reviewModal.style.display='block');
+        reviewModal?.addEventListener('click', (e)=>{ if(e.target === reviewModal) reviewModal.style.display='none'; });
+
+        function starStr(n){ n=Math.max(0,Math.min(5, Math.round(n||0))); return '★'.repeat(n)+'☆'.repeat(5-n); }
+        function fmtDate(ts){ try{ return new Date(ts).toLocaleString('fr-FR'); }catch{ return ''; } }
+        function renderReviews(targetId, subjectType, list){
+          const el=document.getElementById(targetId); if(!el) return;
+          const reviews=(list||[]).filter(r=>r.subject_type===subjectType)
+            .sort((a,b)=> (new Date(b.created_at||b.createdAt||0)) - (new Date(a.created_at||a.createdAt||0)));
+          if(!reviews.length){
+            el.innerHTML=`<b>${subjectType==='vendor'?'Avis sur les vendeurs':'Avis sur les livreurs'}</b>
+              <div class="muted" style="margin-top:6px">Aucun avis pour le moment.</div>`;
+            return;
+          }
+          const avg=reviews.reduce((a,r)=>a+(r.rating||0),0)/reviews.length;
+          el.innerHTML=`<b>${subjectType==='vendor'?'Avis sur les vendeurs':'Avis sur les livreurs'} (${reviews.length})</b>
+              <div class="muted" style="margin-top:4px">${starStr(Math.round(avg))} · ${avg.toFixed(1)}/5</div>
+              <div id="${targetId}_list" style="margin-top:10px;display:grid;gap:8px"></div>`;
+          const wrap=document.getElementById(`${targetId}_list`);
+          reviews.slice(0,6).forEach(r=>{
+            const item=document.createElement('div');
+            item.style.cssText='border:1px solid #EEF0F6;border-radius:12px;padding:10px;background:#fff';
+            const txt=(r.comment||'').replace(/</g,'&lt;');
+            item.innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+                <span>${starStr(r.rating)}</span><span class="muted">${fmtDate(r.created_at||r.createdAt)}</span></div>
+              <div class="muted" style="margin-top:6px">${txt||'<i>Sans commentaire</i>'}</div>`;
+            wrap.appendChild(item);
+          });
+        }
+        async function mountReviews(){
+          if (supabase){
+            const { data, error } = await supabase.from('reviews').select('*').order('created_at',{ascending:false}).limit(50);
+            if(!error && Array.isArray(data)){ renderReviews('sellerReviews','vendor',data); renderReviews('driverReviews','driver',data); return; }
+          }
+          const pool=JSON.parse(localStorage.getItem('mango_demo_reviews')||'[]');
+          renderReviews('sellerReviews','vendor',pool);
+          renderReviews('driverReviews','driver',pool);
+        }
+        mountReviews();
+        window.addEventListener('storage', mountReviews);
+        window.addEventListener('hashchange', mountReviews);
+
+        revSubmit?.addEventListener('click', async () => {
+          const last = JSON.parse(localStorage.getItem('mango_last_tracking') || 'null');
+          if (!last) { toast('Aucune commande à noter.','error'); return; }
+          if (!supabase) { toast('Base non connectée (DB: LOCAL).','error'); return; }
+          const { data: { session } } = await supabase.auth.getSession();
+          const userId = session?.user?.id;
+          if (!userId) { toast('Connectez-vous pour publier un avis.','error'); return; }
+          const orderId = last.orderId;
+          try {
+            let { data: ord } = await supabase.from('orders').select('id').eq('id', orderId).maybeSingle();
+            if (!ord) {
+              const { error: insErr } = await supabase.from('orders').insert({ id: orderId, client_id: userId });
+              if (insErr) throw insErr;
+            }
+            let { data: part } = await supabase.from('order_participants')
+              .select('order_id, profile_id').eq('order_id', orderId).eq('profile_id', userId).maybeSingle();
+            if (!part) {
+              const { error: partErr } = await supabase.from('order_participants')
+                .insert({ order_id: orderId, profile_id: userId, role: 'client' });
+              if (partErr) throw partErr;
+            }
+            const payload = {
+              order_id: orderId,
+              subject_type: revTarget.value, // 'vendor' | 'driver'
+              subject_id: revTarget.value === 'vendor'
+                  ? (last.vendor_id || 'VENDOR_DEMO')
+                  : (last.driver?.id || 'DRIVER_DEMO'),
+              author_role: 'client',
+              rating: parseInt(revRating.value, 10),
+              comment: revComment.value.trim(),
+              visibility: 'public',
+              author_id: userId
+            };
+            const { error } = await supabase.from('reviews').insert(payload);
+            if (error) throw error;
+            reviewModal.style.display = 'none';
+            toast('Merci pour votre avis !','success');
+            mountReviews?.();
+          } catch (e) {
+            toast('Erreur Supabase: ' + (e?.message || e),'error');
+          }
+        });
+
+        /* --- Données démo répertoire (ids alignés avec products.sellerId) --- */
+        const SellerDb = [
+          { id:101, shop:'Fruits de Kindia', city:'Kindia',  cats:['Agro'], product:'Mangues', zones:['Kindia','Conakry'], phone:'620111111', img:'https://images.unsplash.com/photo-1571171637578-0419d10e9458?q=80&w=300&auto=format&fit=crop' },
+          { id:102, shop:'Ananas de Boké',   city:'Boké',    cats:['Agro'], product:'Ananas',  zones:['Boké','Conakry'],   phone:'620222222', img:'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?q=80&w=300&auto=format&fit=crop' },
+          { id:201, shop:'Wax by Marie',     city:'Conakry', cats:['Mode'], product:'Pagne',   zones:['Conakry','Labé'],   phone:'620333333', img:'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=300&auto=format&fit=crop' }
+        ];
+
+        const DriverDb = [
+          { id:'DRIVER_DEMO', name:'Alpha Camara',  vehicle:'Moto',   phone:'620000000', zones:['Kindia','Conakry'], active:true },
+          { id:'DRV-2',       name:'Binta Diallo',  vehicle:'Voiture',phone:'622123456', zones:['Conakry','Labé'],   active:false },
+          { id:'DRV-3',       name:'Ibrahima Bah',  vehicle:'Moto',   phone:'629987654', zones:['Mamou','Conakry'],  active:true }
+        ];
+
+        /* --- util: étoiles (compat) --- */
+        function star(n){ n=Math.max(1,Math.min(5,Math.round(n||0))); return '★'.repeat(n)+'☆'.repeat(5-n); }
+
+        /* ====== Tri & Pagination (état global) ====== */
+        const SELLER_PAGE_SIZE = 6;
+        const DRIVER_PAGE_SIZE = 6;
+        const sellerState = { page: 1, sort: 'top' };   // 'top' | 'alpha' | 'city'
+        const driverState = { page: 1, sort: 'top' };   // 'top' | 'alpha'
+
+        function saveListState(){
+          localStorage.setItem('mango_seller_state', JSON.stringify(sellerState));
+          localStorage.setItem('mango_driver_state', JSON.stringify(driverState));
+        }
+        function loadListState(){
+          try{
+            const s = JSON.parse(localStorage.getItem('mango_seller_state')||'{}');
+            if (s && typeof s==='object'){
+              if (s.sort) sellerState.sort = s.sort;
+              if (s.page) sellerState.page = s.page;
+            }
+          }catch{}
+          try{
+            const d = JSON.parse(localStorage.getItem('mango_driver_state')||'{}');
+            if (d && typeof d==='object'){
+              if (d.sort) driverState.sort = d.sort;
+              if (d.page) driverState.page = d.page;
+            }
+          }catch{}
+        }
+        loadListState();
+
+        function paginate(arr, page, perPage){
+          const total = Math.max(1, Math.ceil(arr.length / perPage));
+          const p = Math.min(Math.max(1, page), total);
+          const start = (p - 1) * perPage;
+          return { items: arr.slice(start, start + perPage), page: p, total };
+        }
+
+        /* --- notes: supabase/local --- */
+        async function getAvgFor(subject_type, ids){
+          const out = {}; ids.forEach(id=> out[id]={avg:0,count:0});
+          if (window.supabase){
+            const { data, error } = await supabase
+              .from('reviews')
+              .select('subject_id,rating')
+              .eq('subject_type', subject_type)
+              .in('subject_id', ids);
+            if (!error && Array.isArray(data)){
+              data.forEach(r=>{
+                const k = String(r.subject_id);
+                if (!(k in out)) out[k]={avg:0,count:0};
+                out[k].avg = ((out[k].avg*out[k].count)+ (r.rating||0)) / (out[k].count+1);
+                out[k].count += 1;
+              });
+            }
+          } else {
+            const pool = JSON.parse(localStorage.getItem('mango_demo_reviews')||'[]')
+              .filter(r=>r.subject_type===subject_type && ids.map(String).includes(String(r.subject_id)));
+            pool.forEach(r=>{
+              const k=String(r.subject_id);
+              if (!(k in out)) out[k]={avg:0,count:0};
+              out[k].avg = ((out[k].avg*out[k].count)+ (r.rating||0)) / (out[k].count+1);
+              out[k].count += 1;
+            });
+          }
+          return out;
+        }
+
+        /* --- rendu Vendeurs (tri + pagination) --- */
+        async function renderSellers(){
+          const box = document.getElementById('sellerList'); if(!box) return;
+          showSkeleton(box, 6);
+
+          const q = (document.getElementById('sellerSearch')?.value||'').toLowerCase();
+          const city = (document.getElementById('sellerCity')?.value||'').trim();
+          let list = [...SellerDb];
+
+          const selSort = document.getElementById('sellerSort');
+          if (selSort){ selSort.value = sellerState.sort; sellerState.sort = selSort.value; }
+          if (q) list = list.filter(v=> [v.shop,v.city,(v.cats||[]).join(' '),v.product].join(' ').toLowerCase().includes(q));
+          if (city) list = list.filter(v=> v.city===city);
+
+          const ratingMap = await getAvgFor('vendor', list.map(v=>v.id));
+          const withRatings = list.map(v=>{
+            const r = ratingMap[String(v.id)]||{avg:0,count:0};
+            return { ...v, _avg: r.avg||0, _count: r.count||0 };
+          });
+
+          if (sellerState.sort === 'top'){
+            withRatings.sort((a,b)=> (b._avg - a._avg) || (b._count - a._count) || a.shop.localeCompare(b.shop));
+          } else if (sellerState.sort === 'alpha'){
+            withRatings.sort((a,b)=> a.shop.localeCompare(b.shop));
+          } else if (sellerState.sort === 'city'){
+            withRatings.sort((a,b)=> a.city.localeCompare(b.city) || a.shop.localeCompare(b.shop));
+          }
+
+          const { items, page, total } = paginate(withRatings, sellerState.page, SELLER_PAGE_SIZE);
+            // remonter un peu la vue pour voir le haut de la liste
+          try{ document.getElementById('seller').scrollIntoView({behavior:'smooth', block:'start'}); }catch{}
+          sellerState.page = page; saveListState();
+
+          box.innerHTML='';
+          if (!items.length){ box.innerHTML='<div class="muted">Aucun vendeur.</div>'; }
+
+          items.forEach(v=>{
+            const rAvg = v._avg, rCount = v._count;
+            const card = document.createElement('div');
+            card.className='product-card';
+            card.innerHTML = `
+              <img src="${v.img}" alt="${v.shop}" onerror="this.src='https://picsum.photos/seed/shop-${v.id}/140/140'">
+              <div class="meta">
+                <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">
+                  <b>${v.shop}</b>
+                  ${badgeHtml}
+                </div>
+                <div class="muted" style="margin-top:4px">${v.city} • Cat: ${(v.cats||[]).join(', ')||'—'}</div>
+                <div class="muted">Zones: ${(v.zones||[]).join(', ')||'—'}</div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap">
+                  <a class="btn btn-ghost" href="tel:${v.phone}">Appeler</a>
+                  <a class="btn btn-ghost" href="#categories">Voir produits</a>
+                </div>
+              </div>`;
+            box.appendChild(card);
+          });
+
+          const info = document.getElementById('sellerPageInfo');
+          const prev = document.getElementById('sellerPrev');
+          const next = document.getElementById('sellerNext');
+          if (info) info.textContent = `${page} / ${total}`;
+          if (prev){ prev.disabled = page<=1; prev.onclick = (ev)=>{ ev.preventDefault(); sellerState.page = Math.max(1, sellerState.page-1); renderSellers(); }; }
+          if (next){ next.disabled = page>=total; next.onclick = (ev)=>{ ev.preventDefault(); sellerState.page = Math.min(total, sellerState.page+1); renderSellers(); }; }
+        }
+
+        /* --- rendu Livreurs (tri + pagination) --- */
+        async function renderDrivers(){
+          const box = document.getElementById('driverList'); if(!box) return;
+          showSkeleton(box, 6);
+
+          const q = (document.getElementById('driverSearch')?.value||'').toLowerCase();
+          const zone = (document.getElementById('driverZone')?.value||'').trim();
+          let list = [...DriverDb];
+
+          const selSort = document.getElementById('driverSort');
+          if (selSort){ selSort.value = driverState.sort; driverState.sort = selSort.value; }
+          if (q) list = list.filter(d=> [d.name,(d.zones||[]).join(' ')].join(' ').toLowerCase().includes(q));
+          if (zone) list = list.filter(d=> (d.zones||[]).includes(zone));
+
+          const ratingMap = await getAvgFor('driver', list.map(d=>d.id));
+          const withRatings = list.map(d=>{
+            const r = ratingMap[String(d.id)]||{avg:0,count:0};
+            return { ...d, _avg: r.avg||0, _count: r.count||0 };
+          });
+
+          if (driverState.sort === 'top'){
+            withRatings.sort((a,b)=> (b._avg - a._avg) || (b._count - a._count) || a.name.localeCompare(b.name));
+          } else if (driverState.sort === 'alpha'){
+            withRatings.sort((a,b)=> a.name.localeCompare(b.name));
+          }
+
+          const { items, page, total } = paginate(withRatings, driverState.page, DRIVER_PAGE_SIZE);
+          try{ document.getElementById('driver').scrollIntoView({behavior:'smooth', block:'start'}); }catch{}
+          driverState.page = page; saveListState();
+
+          box.innerHTML='';
+          if (!items.length){ box.innerHTML='<div class="muted">Aucun livreur.</div>'; }
+
+          items.forEach(d=>{
+            const badgeHtml = ratingBadge(d._avg, d._count);
+            const card = document.createElement('div');
+            card.className='product-card';
+            card.innerHTML = `
+              <img src="https://picsum.photos/seed/driver-${encodeURIComponent(d.id)}/140/140" alt="${d.name}">
+              <div class="meta">
+                <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">
+                  <b>${d.name}</b>
+                  <span class="badge ${d.active?'success':''}">${d.active?'Disponible':'Indisponible'}</span>
+                </div>
+                <div class="muted" style="margin-top:4px">${d.vehicle} • Zones: ${(d.zones||[]).join(', ')||'—'}</div>
+                <div class="muted">${badgeHtml}</div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap">
+                  <a class="btn btn-ghost" href="tel:${d.phone}">Appeler</a>
+                </div>
+              </div>`;
+            box.appendChild(card);
+          });
+
+          const info = document.getElementById('driverPageInfo');
+          const prev = document.getElementById('driverPrev');
+          const next = document.getElementById('driverNext');
+          if (info) info.textContent = `${page} / ${total}`;
+          if (prev){ prev.disabled = page<=1; prev.onclick = (ev)=>{ ev.preventDefault(); driverState.page = Math.max(1, driverState.page-1); renderDrivers(); }; }
+          if (next){ next.disabled = page>=total; next.onclick = (ev)=>{ ev.preventDefault(); driverState.page = Math.min(total, driverState.page+1); renderDrivers(); }; }
+        }
+
+        // --- events & init (listes) ---
+        const renderSellersDeb = debounce(()=>{ sellerState.page = 1; renderSellers(); saveListState(); }, 300);
+        const renderDriversDeb = debounce(()=>{ driverState.page = 1; renderDrivers(); saveListState(); }, 300);
+
+        document.getElementById('sellerSearch')?.addEventListener('input', renderSellersDeb);
+        document.getElementById('sellerCity')?.addEventListener('input', renderSellersDeb);
+        document.getElementById('sellerSort')?.addEventListener('change', ()=>{ sellerState.page=1; renderSellers(); saveListState(); });
+
+        document.getElementById('driverSearch')?.addEventListener('input', renderDriversDeb);
+        document.getElementById('driverZone')?.addEventListener('input', renderDriversDeb);
+        document.getElementById('driverSort')?.addEventListener('change', ()=>{ driverState.page=1; renderDrivers(); saveListState(); });
+
+        // boutons pagination : on empêche juste le <a> par défaut, la logique est déjà dans render*
+        document.getElementById('sellerPrev')?.addEventListener('click', (e)=>{ e.preventDefault(); });
+        document.getElementById('sellerNext')?.addEventListener('click', (e)=>{ e.preventDefault(); });
+        document.getElementById('driverPrev')?.addEventListener('click', (e)=>{ e.preventDefault(); });
+        document.getElementById('driverNext')?.addEventListener('click', (e)=>{ e.preventDefault(); });
+
+        // Quand Supabase devient prêt, re-rendre si l’onglet est ouvert
+        window.addEventListener('supabase-ready', () => {
+          if (location.hash === '#seller') renderSellers();
+          if (location.hash === '#driver') renderDrivers();
+        });
+
+    </script>
+            <!-- Nouveau bloc d’enregistrement du Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js').then(reg => {
+                // Si un nouveau SW attend, active-le tout de suite
+                if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+
+                // Quand un nouveau SW est trouvé
+                reg.addEventListener('updatefound', () => {
+                    const nw = reg.installing;
+                    if (!nw) return;
+                    nw.addEventListener('statechange', () => {
+                        // Une fois installé, si une version contrôle déjà la page, on recharge
+                        if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+                            window.location.reload();
+                        }
+                    });
+                });
+            }).catch(()=>{});
+        });
+    }
+    </script>
+
+</body>
+</html>
